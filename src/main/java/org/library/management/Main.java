@@ -1,5 +1,15 @@
 package org.library.management;
 
+import org.library.management.application.BookService;
+import org.library.management.application.LoanService;
+import org.library.management.application.MemberService;
+import org.library.management.application.service.BookServiceImpl;
+import org.library.management.application.service.LoanServiceImpl;
+import org.library.management.application.service.MemberServiceImpl;
+import org.library.management.application.service.ServiceHelper;
+import org.library.management.persistence.JsonStorage;
+import org.library.management.presentation.ConsoleUI;
+
 /**
  * Author: Artyom Aroyan
  * Date: 20.10.25
@@ -7,6 +17,14 @@ package org.library.management;
  */
 public class Main {
     static void main() {
-        IO.println("Hello and welcome!");
+        JsonStorage storage = new JsonStorage();
+        ServiceHelper serviceHelper = new ServiceHelper(storage);
+
+        BookService bookService = new BookServiceImpl(serviceHelper);
+        LoanService loanService = new LoanServiceImpl(serviceHelper);
+        MemberService memberService = new MemberServiceImpl(serviceHelper);
+
+        ConsoleUI ui = new ConsoleUI(bookService, loanService, memberService);
+        ui.start();
     }
 }
