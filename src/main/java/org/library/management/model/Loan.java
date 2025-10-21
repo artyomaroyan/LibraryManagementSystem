@@ -1,6 +1,6 @@
 package org.library.management.model;
 
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.UUID;
 
 /**
@@ -12,7 +12,11 @@ public record Loan(
         UUID id,
         UUID bookId,
         UUID memberId,
-        LocalDate loanDate,
-        LocalDate dueDate,
-        LocalDate returnedDate) {
+        Instant loanDate,
+        Instant dueDate,
+        boolean returned) {
+
+    public Loan withReturned(boolean isReturned) {
+        return new Loan(id, bookId, memberId, loanDate, dueDate, isReturned);
+    }
 }

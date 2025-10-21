@@ -14,4 +14,20 @@ public record Book(
         int year,
         int totalCopies,
         int availableCopies) {
+
+    public Book withAvailableCopies(int newAvailableCopies) {
+        return new Book(id, title, author, year, totalCopies, newAvailableCopies);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", year=" + year +
+                ", totalCopies=" + totalCopies +
+                ", availableCopies=" + availableCopies +
+                '}';
+    }
 }

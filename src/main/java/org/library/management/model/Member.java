@@ -1,6 +1,6 @@
 package org.library.management.model;
 
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.UUID;
 
 /**
@@ -12,5 +12,5 @@ public record Member(
         UUID id,
         String name,
         String email,
-        LocalDate joinedDate) {
+        Instant joinedDate) {
 }
