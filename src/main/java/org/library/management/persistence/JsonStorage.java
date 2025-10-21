@@ -8,6 +8,9 @@ import org.library.management.model.Member;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,11 +66,15 @@ public class JsonStorage implements StorageService {
     }
 
     private <T> String writeJson(String path, Map<String, T> data) {
-        try (Writer writer = new FileWriter(path)) {
-             gson.toJson(data, writer);
-             return "Successfully wrote JSON to " + path;
+        Path pth = Paths.get(path);
+        try {
+            Files.createDirectories(pth.getParent());
+            try (Writer writer = Files.newBufferedWriter(pth)) {
+                gson.toJson(data, writer);
+            }
+            return "Successfully wrote JSON to " + path;
         } catch (IOException ex) {
-            throw new RuntimeException("Error writing " + path, ex);
+            throw new UncheckedIOException(ex);
         }
     }
 }
