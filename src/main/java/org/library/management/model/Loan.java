@@ -19,4 +19,16 @@ public record Loan(
     public Loan withReturned(boolean isReturned) {
         return new Loan(id, bookId, memberId, loanDate, dueDate, isReturned);
     }
+
+    @Override
+    public String toString() {
+        return "Loan{" +
+                "id=" + id +
+                ", bookId=" + bookId +
+                ", memberId=" + memberId +
+                ", loanDate=" + loanDate +
+                ", dueDate=" + dueDate +
+                ", returned=" + returned +
+                '}';
+    }
 }

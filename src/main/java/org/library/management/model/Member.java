@@ -13,4 +13,14 @@ public record Member(
         String name,
         String email,
         Instant joinedDate) {
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", joinedDate=" + joinedDate +
+                '}';
+    }
 }
