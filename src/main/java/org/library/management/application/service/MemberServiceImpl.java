@@ -22,10 +22,14 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public String addMember(String name, String email) {
-        UUID id = UUID.randomUUID();
-        Member member = new Member(id, name, email, Instant.now());
-        members.put(serviceHelper.uuidToString(id), member);
-        return serviceHelper.saveData();
+        try {
+            UUID id = UUID.randomUUID();
+            Member member = new Member(id, name, email, Instant.now());
+            members.put(serviceHelper.uuidToString(id), member);
+            return serviceHelper.saveData();
+        } catch (Exception ex) {
+            return "Error creating member" + ex.getMessage();
+        }
     }
 
     @Override

@@ -3,7 +3,10 @@ package org.library.management.application.service;
 import org.library.management.application.BookService;
 import org.library.management.model.Book;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Author: Artyom Aroyan
@@ -21,10 +24,14 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public String addBook(String title, String author, int year, int totalCopies) {
-        UUID id = UUID.randomUUID();
-        Book book = new Book(id, title, author, year, totalCopies, totalCopies);
-        books.put(serviceHelper.uuidToString(id), book);
-        return serviceHelper.saveData();
+        try {
+            UUID id = UUID.randomUUID();
+            Book book = new Book(id, title, author, year, totalCopies, totalCopies);
+            books.put(serviceHelper.uuidToString(id), book);
+            return serviceHelper.saveData();
+        } catch (Exception ex) {
+            return "Error creating member" + ex.getMessage();
+        }
     }
 
     @Override
