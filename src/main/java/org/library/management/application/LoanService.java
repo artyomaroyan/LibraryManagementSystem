@@ -13,5 +13,6 @@ import java.util.UUID;
 public interface LoanService {
     boolean createLoan(UUID memberId, UUID bookId);
     boolean returnLoan(UUID loanId);
+    boolean existsById(UUID loanId);
     List<Loan> getOverdueLoans();
 }

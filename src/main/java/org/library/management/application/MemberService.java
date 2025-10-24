@@ -13,6 +13,7 @@ import java.util.UUID;
  */
 public interface MemberService {
     String addMember(String name, String email);
+    boolean existsById(UUID memberId);
     Collection<Member> listOfMembers();
     Optional<Member> findMemberByName(String name);
     boolean deleteMemberById(UUID id);

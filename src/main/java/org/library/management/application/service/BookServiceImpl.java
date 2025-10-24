@@ -28,6 +28,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public boolean existsById(UUID bookId) {
+        return books.containsKey(serviceHelper.uuidToString(bookId));
+    }
+
+    @Override
     public Collection<Book> listOfBooks() {
         return books.values();
     }
