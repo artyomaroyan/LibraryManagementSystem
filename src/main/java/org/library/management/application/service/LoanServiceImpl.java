@@ -5,6 +5,7 @@ import org.library.management.model.Book;
 import org.library.management.model.Loan;
 import org.library.management.model.Member;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 
@@ -28,34 +29,54 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public boolean createLoan(UUID memberId, UUID bookId) {
-        String bookKey = serviceHelper.uuidToString(bookId);
-        String memberKey = serviceHelper.uuidToString(memberId);
+        try {
+            String bookKey = serviceHelper.uuidToString(bookId);
+            String memberKey = serviceHelper.uuidToString(memberId);
 
-        if (!books.containsKey(bookKey) || !members.containsKey(memberKey)) {
-            IO.println("Member or book not found!");
+            if (!members.containsKey(memberKey)) {
+                IO.println("Member not found:");
+                return false;
+            }
+
+            Book book = books.get(bookKey);
+            if (book == null) {
+                IO.println("Book not found");
+                return false;
+            }
+
+            if (book.availableCopies() <= 0) {
+                IO.println("Book is not available!");
+                return false;
+            }
+
+            boolean hasExistingLoan = loans.values().stream()
+                    .anyMatch(loan ->
+                            loan.memberId().equals(memberId) &&
+                                    loan.bookId().equals(bookId) &&
+                                    !loan.returned());
+
+            if (hasExistingLoan) {
+                IO.println("Member already has this book on loan!");
+                return false;
+            }
+
+            UUID id = UUID.randomUUID();
+            Instant now = Instant.now();
+            Instant dueDate = now.plus(Duration.ofDays(14));
+
+            Loan loan = new Loan(id, bookId, memberId, now, dueDate, false);
+            loans.put(serviceHelper.uuidToString(id), loan);
+
+            Book updated = book.withAvailableCopies(book.availableCopies() - 1);
+            books.put(bookKey, updated);
+
+            serviceHelper.saveData();
+            IO.println("Loan created successfully. Due date: " + dueDate);
+            return true;
+        } catch (Exception ex) {
+            IO.println("Error creating loan: " + ex.getMessage());
             return false;
         }
-
-        Book book = books.get(bookKey);
-        if (book.availableCopies() <= 0) {
-            IO.println("Book is not available!");
-            return false;
-        }
-
-        UUID id = UUID.randomUUID();
-        Instant now = Instant.now();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(Date.from(now));
-        calendar.add(Calendar.DAY_OF_MONTH, 14);
-
-        Loan loan = new Loan(id, bookId, memberId, now, calendar.getTime().toInstant(), false);
-        loans.put(serviceHelper.uuidToString(id), loan);
-
-        Book updated = book.withAvailableCopies(book.availableCopies() - 1);
-        books.put(bookKey, updated);
-
-        serviceHelper.saveData();
-        return true;
     }
 
     @Override
