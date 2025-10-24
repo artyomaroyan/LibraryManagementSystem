@@ -5,10 +5,7 @@ import org.library.management.model.Loan;
 import org.library.management.model.Member;
 import org.library.management.persistence.StorageService;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Author: Artyom Aroyan
@@ -17,27 +14,39 @@ import java.util.UUID;
  */
 public final class ServiceHelper {
     private final StorageService storageService;
-    private Map<String, Book> books = new HashMap<>();
-    private Map<String, Loan> loans = new HashMap<>();
-    private Map<String, Member> members = new HashMap<>();
+    private Map<String, Book> books;
+    private Map<String, Loan> loans;
+    private Map<String, Member> members;
 
     public ServiceHelper(StorageService storageService) {
-        this.storageService = storageService;
+        this.storageService = Objects.requireNonNull(storageService, "Storage Service can not be null!.");
         loadData();
     }
 
     void loadData() {
-        this.books = Optional.ofNullable(storageService.loadBooks()).orElse(new HashMap<>());
-        this.loans = Optional.ofNullable(storageService.loadLoans()).orElse(new HashMap<>());
-        this.members = Optional.ofNullable(storageService.loadMembers()).orElse(new HashMap<>());
+        try {
+            this.books = Optional.ofNullable(storageService.loadBooks()).orElse(new HashMap<>());
+            this.loans = Optional.ofNullable(storageService.loadLoans()).orElse(new HashMap<>());
+            this.members = Optional.ofNullable(storageService.loadMembers()).orElse(new HashMap<>());
+
+            IO.println("Data loaded successfully:");
+        } catch (Exception ex) {
+            IO.println("Error loading data: " + ex.getMessage());
+            books = new HashMap<>();
+            loans = new HashMap<>();
+            members = new HashMap<>();
+        }
     }
 
     String saveData() {
-        String bookStatus = storageService.saveBook(books == null ? new HashMap<>() : books);
-        String loanStatus = storageService.saveLoan(loans == null ? new HashMap<>() : loans);
-        String memberStatus = storageService.saveMember(members == null ? new HashMap<>() : members);
-        return String.format("Save completed: Books=%s, Loans=%s, Members=%s",
-                bookStatus, loanStatus, memberStatus);
+        try {
+            String bookStatus = storageService.saveBook(books);
+            String loanStatus = storageService.saveLoan(loans);
+            String memberStatus = storageService.saveMember(members);
+            return "Save completed: Books=" + bookStatus + ", Loans=" + loanStatus + ", Members=" + memberStatus;
+        } catch (Exception ex) {
+            return "Error saving data: " + ex.getMessage();
+        }
     }
 
     public Map<String, Book> getBooks() {
