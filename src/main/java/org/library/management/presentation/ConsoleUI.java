@@ -229,7 +229,7 @@ public class ConsoleUI {
 
     private void createLoan() {
         try {
-            UUID bookId = readUUID("Book ID:");
+            UUID bookId = readUUID("Book ID: ");
             UUID memberId = readUUID("Member ID: ");
 
             if (!bookService.existsById(bookId) || !memberService.existsById(memberId)) {

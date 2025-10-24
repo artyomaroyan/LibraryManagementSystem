@@ -18,7 +18,7 @@ import org.library.management.presentation.ConsoleUI;
 public class Main {
     static void main() {
         try {
-            IO.println("🚀 Starting Library Management System...");
+            IO.println("Starting Library Management System...");
 
             JsonStorage storage = new JsonStorage();
             ServiceHelper serviceHelper = new ServiceHelper(storage);
@@ -30,9 +30,9 @@ public class Main {
             ConsoleUI ui = new ConsoleUI(bookService, loanService, memberService);
             ui.start();
 
-            IO.println("👋 Thank you for using Library Management System!");
+            IO.println("Thank you for using Library Management System!");
         } catch (Exception ex) {
-            IO.println("💥 Fatal error: " + ex.getMessage());
+            IO.println("Fatal error: " + ex.getMessage());
         }
     }
 }
