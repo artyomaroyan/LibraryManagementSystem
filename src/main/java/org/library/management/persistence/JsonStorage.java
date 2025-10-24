@@ -1,16 +1,19 @@
 package org.library.management.persistence;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.library.management.model.Book;
 import org.library.management.model.Loan;
 import org.library.management.model.Member;
+import org.library.management.util.InstantAdapter;
 
 import java.io.*;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,10 +23,13 @@ import java.util.Map;
  * Time: 22:21:29
  */
 public class JsonStorage implements StorageService {
-    private static final String BOOKS_FILE = "resources/data/books.json";
-    private static final String LOANS_FILE = "resources/data/loans.json";
-    private static final String MEMBERS_FILE = "resources/data/members.json";
-    private final Gson gson = new Gson();
+    private static final String BOOKS_FILE = "data/books.json";
+    private static final String LOANS_FILE = "data/loans.json";
+    private static final String MEMBERS_FILE = "data/members.json";
+    private final Gson gson = new GsonBuilder()
+            .registerTypeAdapter(Instant.class, new InstantAdapter())
+            .setPrettyPrinting()
+            .create();
 
     @Override
     public Map<String, Book> loadBooks() {
