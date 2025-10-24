@@ -53,7 +53,8 @@ public class ConsoleUI {
             IO.println("2. List of books");
             IO.println("3. Find book by title");
             IO.println("4. Delete book by ID");
-            IO.print("0. Back");
+            IO.println("0. Back");
+            IO.print("Enter your choice: ");
 
             String choice = scanner.nextLine();
 
@@ -99,7 +100,8 @@ public class ConsoleUI {
             IO.println("2. List of members");
             IO.println("3. Find member by name");
             IO.println("4. Delete member by ID");
-            IO.print("0. Exit");
+            IO.println("0. Exit");
+            IO.print("Enter your choice: ");
 
             String choice = scanner.nextLine();
 
@@ -141,6 +143,7 @@ public class ConsoleUI {
             IO.println("2. Return loan");
             IO.println("3. Check overdue loans");
             IO.println("0. Exit");
+            IO.print("Enter your choice: ");
 
             String choice = scanner.nextLine();
 
