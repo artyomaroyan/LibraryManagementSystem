@@ -1,1 +1,10 @@
-{}
+{
+  "70e551de-540f-4a44-97a1-376bd0d1aeba": {
+    "id": "70e551de-540f-4a44-97a1-376bd0d1aeba",
+    "bookId": "f104dadd-cbf4-493b-8b27-71fbf2e6446e",
+    "memberId": "d39b3fd8-5793-4097-a900-4d7d3a536094",
+    "loanDate": "2025-10-24T20:35:22.019611Z",
+    "dueDate": "2025-11-07T20:35:22.019611Z",
+    "returned": false
+  }
+}

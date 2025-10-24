@@ -1,1 +1,18 @@
-{"f104dadd-cbf4-493b-8b27-71fbf2e6446e":{"id":"f104dadd-cbf4-493b-8b27-71fbf2e6446e","title":"title1","author":"author1","year":1786,"totalCopies":89,"availableCopies":89}}
+{
+  "f104dadd-cbf4-493b-8b27-71fbf2e6446e": {
+    "id": "f104dadd-cbf4-493b-8b27-71fbf2e6446e",
+    "title": "title1",
+    "author": "author1",
+    "year": 1786,
+    "totalCopies": 89,
+    "availableCopies": 88
+  },
+  "723b551c-9519-4804-98b7-f3863aa89fd7": {
+    "id": "723b551c-9519-4804-98b7-f3863aa89fd7",
+    "title": "title2",
+    "author": "author2",
+    "year": 1999,
+    "totalCopies": 123,
+    "availableCopies": 123
+  }
+}

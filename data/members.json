@@ -1,1 +1,14 @@
-{}
+{
+  "7ab4e864-146d-4bbb-b8e0-ee980e9bcfb0": {
+    "id": "7ab4e864-146d-4bbb-b8e0-ee980e9bcfb0",
+    "name": "member1",
+    "email": "member1@gmail.com",
+    "joinedDate": "2025-10-24T20:34:04.437755Z"
+  },
+  "d39b3fd8-5793-4097-a900-4d7d3a536094": {
+    "id": "d39b3fd8-5793-4097-a900-4d7d3a536094",
+    "name": "member2",
+    "email": "member2@gmail.com",
+    "joinedDate": "2025-10-24T20:34:29.927036Z"
+  }
+}
