@@ -17,14 +17,22 @@ import org.library.management.presentation.ConsoleUI;
  */
 public class Main {
     static void main() {
-        JsonStorage storage = new JsonStorage();
-        ServiceHelper serviceHelper = new ServiceHelper(storage);
+        try {
+            IO.println("🚀 Starting Library Management System...");
 
-        BookService bookService = new BookServiceImpl(serviceHelper);
-        LoanService loanService = new LoanServiceImpl(serviceHelper);
-        MemberService memberService = new MemberServiceImpl(serviceHelper);
+            JsonStorage storage = new JsonStorage();
+            ServiceHelper serviceHelper = new ServiceHelper(storage);
 
-        ConsoleUI ui = new ConsoleUI(bookService, loanService, memberService);
-        ui.start();
+            BookService bookService = new BookServiceImpl(serviceHelper);
+            LoanService loanService = new LoanServiceImpl(serviceHelper);
+            MemberService memberService = new MemberServiceImpl(serviceHelper);
+
+            ConsoleUI ui = new ConsoleUI(bookService, loanService, memberService);
+            ui.start();
+
+            IO.println("👋 Thank you for using Library Management System!");
+        } catch (Exception ex) {
+            IO.println("💥 Fatal error: " + ex.getMessage());
+        }
     }
 }
