@@ -20,10 +20,6 @@ public class MainFrame extends JFrame {
     private final LoanService loanService;
     private final MemberService memberService;
 
-    private BookPanel bookPanel;
-    private LoanPanel loanPanel;
-    private MemberPanel memberPanel;
-
     private JPanel mainPanel;
     private CardLayout cardLayout;
 
@@ -31,6 +27,7 @@ public class MainFrame extends JFrame {
         this.bookService = bookService;
         this.loanService = loanService;
         this.memberService = memberService;
+        initializeUI();
     }
 
     private void initializeUI() {
@@ -47,9 +44,9 @@ public class MainFrame extends JFrame {
         JPanel navigationPanel = createNavigationPanel();
 
         // create content panels.
-        bookPanel = new BookPanel(bookService);
-        memberPanel = new MemberPanel(memberService);
-        loanPanel = new LoanPanel(loanService, bookService, memberService);
+        BookPanel bookPanel = new BookPanel(bookService);
+        MemberPanel memberPanel = new MemberPanel(memberService);
+        LoanPanel loanPanel = new LoanPanel(loanService, bookService, memberService);
 
         // add panels to card layout.
         mainPanel.add(bookPanel, "BOOKS");
@@ -86,7 +83,7 @@ public class MainFrame extends JFrame {
         button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         button.setFont(new Font("SansSerif", Font.BOLD, 14));
 
-        button.addActionListener(e -> cardLayout.show(mainPanel, panelName));
+        button.addActionListener(_ -> cardLayout.show(mainPanel, panelName));
         return button;
     }
 }
