@@ -13,7 +13,7 @@ import java.util.UUID;
  */
 public interface BookService {
     String addBook(String title, String author, int year, int totalCopies);
-    boolean existsById(UUID bookId);
+//    boolean existsById(UUID bookId);
     Collection<Book> listOfBooks();
     Optional<Book> findBookByTitle(String title);
     boolean deleteBookById(UUID id);
