@@ -31,12 +31,12 @@ public class MemberServiceImpl implements MemberService {
             return "Error creating member" + ex.getMessage();
         }
     }
-
+/*
     @Override
     public boolean existsById(UUID memberId) {
         return members.containsKey(serviceHelper.uuidToString(memberId));
     }
-
+*/
     @Override
     public Collection<Member> listOfMembers() {
         return members.values();

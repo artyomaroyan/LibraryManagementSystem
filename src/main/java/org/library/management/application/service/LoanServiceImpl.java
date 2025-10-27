@@ -98,10 +98,15 @@ public class LoanServiceImpl implements LoanService {
         serviceHelper.saveData();
         return true;
     }
-
+/*
     @Override
     public boolean existsById(UUID loanId) {
         return loans.containsKey(serviceHelper.uuidToString(loanId));
+    }
+*/
+    @Override
+    public List<Loan> getAllLoans() {
+        return new ArrayList<>(loans.values());
     }
 
     @Override

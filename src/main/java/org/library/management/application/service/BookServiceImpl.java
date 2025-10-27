@@ -33,12 +33,12 @@ public class BookServiceImpl implements BookService {
             return "Error creating member" + ex.getMessage();
         }
     }
-
+/*
     @Override
     public boolean existsById(UUID bookId) {
         return books.containsKey(serviceHelper.uuidToString(bookId));
     }
-
+*/
     @Override
     public Collection<Book> listOfBooks() {
         return books.values();
