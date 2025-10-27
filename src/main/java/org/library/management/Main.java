@@ -8,7 +8,6 @@ import org.library.management.application.service.LoanServiceImpl;
 import org.library.management.application.service.MemberServiceImpl;
 import org.library.management.application.service.ServiceHelper;
 import org.library.management.persistence.JsonStorage;
-import org.library.management.presentation.ConsoleUI;
 
 import javax.swing.*;
 
@@ -36,8 +35,7 @@ public class Main {
         LoanService loanService = new LoanServiceImpl(serviceHelper);
         MemberService memberService = new MemberServiceImpl(serviceHelper);
 
-//        ConsoleUI ui = new ConsoleUI(bookService, loanService, memberService);
-//        ui.start();
         MainFrame mainFrame = new MainFrame(bookService, loanService, memberService);
+        mainFrame.setVisible(true);
     }
 }
