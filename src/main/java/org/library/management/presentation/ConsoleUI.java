@@ -1,3 +1,4 @@
+/*
 package org.library.management.presentation;
 
 import org.library.management.application.BookService;
@@ -13,11 +14,11 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.UUID;
 
-/**
+**
  * Author: Artyom Aroyan
  * Date: 20.10.25
  * Time: 22:20:28
- */
+ * /
 public class ConsoleUI {
     private final BookService bookService;
     private final LoanService loanService;
@@ -305,3 +306,4 @@ public class ConsoleUI {
         }
     }
 }
+*/
