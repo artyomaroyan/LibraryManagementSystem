@@ -5,6 +5,14 @@
     "memberId": "d39b3fd8-5793-4097-a900-4d7d3a536094",
     "loanDate": "2025-10-24T20:35:22.019611Z",
     "dueDate": "2025-11-07T20:35:22.019611Z",
-    "returned": false
+    "returned": true
+  },
+  "4b036159-45bc-4304-a470-b5eaf9645161": {
+    "id": "4b036159-45bc-4304-a470-b5eaf9645161",
+    "bookId": "3b75e1a1-ac84-44ca-a9d3-d845586968ac",
+    "memberId": "7ab4e864-146d-4bbb-b8e0-ee980e9bcfb0",
+    "loanDate": "2025-10-27T21:44:25.823632Z",
+    "dueDate": "2025-11-10T21:44:25.823632Z",
+    "returned": true
   }
 }

@@ -10,5 +10,11 @@
     "name": "member2",
     "email": "member2@gmail.com",
     "joinedDate": "2025-10-24T20:34:29.927036Z"
+  },
+  "8e9a8260-0f74-4565-b04c-95845bab1229": {
+    "id": "8e9a8260-0f74-4565-b04c-95845bab1229",
+    "name": "member3",
+    "email": "member3@gmail.com",
+    "joinedDate": "2025-10-27T21:49:27.900885Z"
   }
 }

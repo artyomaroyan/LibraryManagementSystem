@@ -5,7 +5,7 @@
     "author": "author1",
     "year": 1786,
     "totalCopies": 89,
-    "availableCopies": 88
+    "availableCopies": 89
   },
   "723b551c-9519-4804-98b7-f3863aa89fd7": {
     "id": "723b551c-9519-4804-98b7-f3863aa89fd7",
@@ -14,5 +14,13 @@
     "year": 1999,
     "totalCopies": 123,
     "availableCopies": 123
+  },
+  "3b75e1a1-ac84-44ca-a9d3-d845586968ac": {
+    "id": "3b75e1a1-ac84-44ca-a9d3-d845586968ac",
+    "title": "title 3",
+    "author": "author3",
+    "year": 1998,
+    "totalCopies": 128,
+    "availableCopies": 128
   }
 }
