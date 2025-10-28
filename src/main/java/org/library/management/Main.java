@@ -19,9 +19,9 @@ import javax.swing.*;
 public class Main {
     static void main() {
         try {
-            UIManager.setLookAndFeel(UIManager.getLookAndFeel());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ex) {
-            IO.println("Fatal error: " + ex.getMessage());
+            IO.println("Error setting look and feel: " + ex.getMessage());
         }
 
         SwingUtilities.invokeLater(Main::createAndShowGUI);
