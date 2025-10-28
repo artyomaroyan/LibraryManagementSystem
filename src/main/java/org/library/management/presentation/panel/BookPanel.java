@@ -49,8 +49,8 @@ public class BookPanel extends JPanel {
 
         searchPanel.add(new JLabel("Search by title"));
         searchPanel.add(searchField);
-        searchButton.add(searchButton);
-        searchButton.add(clearSearchButton);
+        searchPanel.add(searchButton);
+        searchPanel.add(clearSearchButton);
 
         // table.
         String[] columns = {"ID", "Title", "Author", "Year", "Total Copies", "Available Copies"};
@@ -206,8 +206,8 @@ public class BookPanel extends JPanel {
     }
 
     private void deleteSelectedBook() {
-        int selectedRaw = booksTable.getSelectedRow();
-        if (selectedRaw == -1) {
+        int selectedRow = booksTable.getSelectedRow();
+        if (selectedRow == -1) {
             JOptionPane.showMessageDialog(
                     this,
                     "Please select a book to delete!",
@@ -217,12 +217,12 @@ public class BookPanel extends JPanel {
             return;
         }
 
-        String bookId = (String) tableModel.getValueAt(selectedRaw, 0);
-        String bookTitle = (String) tableModel.getValueAt(selectedRaw, 1);
+        String bookId = (String) tableModel.getValueAt(selectedRow, 0);
+        String bookTitle = (String) tableModel.getValueAt(selectedRow, 1);
 
         int confirm = JOptionPane.showConfirmDialog(
                 this,
-                "Are you shore you want to delete book: " + bookTitle + " ?",
+                "Are you sure you want to delete book: " + bookTitle + " ?",
                 "Confirm Delete",
                 JOptionPane.YES_NO_OPTION
         );

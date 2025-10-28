@@ -42,7 +42,7 @@ public class MemberPanel extends JPanel {
         JPanel centerPanel = new JPanel(new BorderLayout(10, 10));
 
         // search panel.
-        JPanel searchPanel = new JPanel(new BorderLayout(10, 10));
+        JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         searchField = new JTextField(20);
         JButton searchButton = new JButton("Search");
         JButton clearSearchButton = new JButton("Clear");
@@ -157,13 +157,13 @@ public class MemberPanel extends JPanel {
 
         saveButton.addActionListener(_ -> {
             try {
-                String name = nameField.getName().trim();
+                String name = nameField.getText().trim();
                 String email = emailField.getText().trim();
 
                 if (name.isEmpty() || email.isEmpty()) {
                     JOptionPane.showMessageDialog(
                             dialog,
-                            "Name or email can not be empty!",
+                            "Name and email can not be empty!",
                             "Error",
                             JOptionPane.ERROR_MESSAGE
                     );
